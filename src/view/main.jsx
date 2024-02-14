@@ -1,5 +1,6 @@
 import postImg from "../assets/2528051_business_envelope_letter_mail_message_icon__1_-removebg-preview.png";
 import userIMG from "../assets/172626_user_male_icon-removebg-preview.png";
+import person from "../assets/8664925_circle_user_person_icon.png";
 
 function Main() {
     return <section className={'w-full h-screen bg-[#f9fafc]'}>
@@ -27,7 +28,7 @@ function Main() {
             </div>
             {/*-------------------MSG BOX-----------------------------------------*/}
             <div
-                className={'w-[60%] h-[600px] bg-white relative top-[20px] left-8 rounded-[10px] overflow-auto overflow-x-hidden'}>
+                className={'w-[60%] h-[600px] bg-white relative top-[20px] left-8 rounded-[10px] overflow-auto overflow-x-hidden inline-block'}>
                 <div
                     className={'w-[95%] h-[500px] rounded-[10px] bg-transparent shadow-xl mt-4 relative left-0 right-0 m-auto overflow-auto overflow-x-hidden'}>
                     <div
@@ -79,19 +80,14 @@ function Main() {
 
                     </div>
 
-                    {/*----------------------Comment----------------------------------
-                    <div className={'w-[95%] h-[300px] relative top-12 left-0 right-0 m-auto rounded-[10px] shadow-xl'}>
-
-                    </div>*/}
-
                 </div>
-                {/*<div className={'w-[95%] h-[500px] rounded-[10px] bg-transparent shadow-xl mt-4 relative left-0 right-0 m-auto '}>
 
-                </div>
-                <div className={'w-[95%] h-[500px] rounded-[10px] bg-transparent shadow-xl mt-4 relative left-0 right-0 m-auto '}>
+            </div>
 
-                </div>*/}
-
+            <div className={'w-[450px] h-[500px] inline-block absolute top-[80px] right-3 rounded-[10px] bg-white shadow-2xl'}>
+                <img src={person} className={'w-20 absolute left-0 right-0 m-auto  top-6'}/>
+                <p className={'text-[23px] font-bold text-[#7aa5ac] flex items-center justify-center relative top-[110px]'}>Maleen</p>
+                <p className={'text-[15px] font-bold text-[#7aa5ac] flex items-center justify-center relative top-[110px]'}>maleen@gmail.com</p>
 
             </div>
 
