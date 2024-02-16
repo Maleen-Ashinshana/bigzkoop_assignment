@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import {createSlice} from '@reduxjs/toolkit';
 
 export const postsSlice = createSlice({
     name: 'posts',
@@ -10,4 +10,4 @@ export const postsSlice = createSlice({
     },
 });
 
-export const { setPosts } = postsSlice.actions;
+export const {setPosts} = postsSlice.actions;

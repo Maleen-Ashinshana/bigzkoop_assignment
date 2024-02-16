@@ -8,6 +8,7 @@ function App() {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch({type: 'FETCH_POSTS_REQUESTED'})
+        dispatch({type: 'FETCH_COMMENTS_REQUESTED'})
 
 
     }, [dispatch]);
