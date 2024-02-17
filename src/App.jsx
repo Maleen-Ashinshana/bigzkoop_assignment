@@ -11,6 +11,7 @@ function App() {
         dispatch({type: 'FETCH_COMMENTS_REQUESTED'})
         dispatch({type: 'FETCH_ALBUMS_REQUESTED'})
         dispatch({type: 'FETCH_PHOTOS_REQUESTED'})
+        dispatch({type: 'FETCH_USERS_REQUESTED'})
 
 
     }, [dispatch]);

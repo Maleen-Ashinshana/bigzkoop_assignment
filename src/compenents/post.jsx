@@ -5,8 +5,11 @@ import {useState} from "react";
 import Comment from "./comment.jsx";
 import {useSelector} from "react-redux";
 
+
 function Post(prop) {
     const comments = useSelector((state) => state.comments)
+    const users = useSelector((state) => state.users)
+    const posts = useSelector((state) => state.posts)
     const [showDiv, setShowDiv] = useState(false);
     const [showModal, setShowModal] = useState(false);
 
@@ -31,7 +34,12 @@ function Post(prop) {
                 <div
                     className={'w-full h-16 border-[1px] border-b-black border-l-transparent border-r-transparent border-t-transparent rounded-[10px]'}>
                     <img src={userIMG} className={'w-12 relative m-2 inline-block'} alt="User"/>
-                    <p className={'inline-block ml-2 text-[#7aa6ac] text-[23px] font-bold relative top-1'}>{prop.id}</p>
+                    <p className={'inline-block ml-2 text-[#7aa6ac] text-[23px] font-bold relative top-1'}>
+                        {/*{prop.filter(user=>user.id===name)}*/}
+                        {/*{users.filter(user=>user.id===name)}*/}
+                        {/*{prop.userId}*/}
+                        {/*{prop.filter(user => user.id === posts.userId)?.name}*/}
+                    </p>
                 </div>
                 <div className={'w-[96%] h-44 rounded-[10px] shadow-md relative left-0 right-0 m-auto mt-4'}>
                     <p className={'text-[18px] m-2'}>{prop.body}</p>

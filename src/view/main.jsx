@@ -1,32 +1,47 @@
 import postImg from "../assets/2528051_business_envelope_letter_mail_message_icon__1_-removebg-preview.png";
 import albumIMG from "../assets/3643766_album_image_landscape_photo_photos_icon.png";
+import usersIMG from "../assets/4243325_users_people_icon.png";
+import userIMG from "../assets/172626_user_male_icon-removebg-preview.png";
 import {useSelector} from "react-redux"
 import {useEffect, useState} from "react";
 import Post from "../compenents/post";
 import Albums from "../compenents/album";
+import album from "../compenents/album";
+import User from "../compenents/user.jsx";
 
 function Main() {
 
     useEffect(() => {
         setShowPostPane(true);
-        setShowAlbumPane(false)
+        setShowAlbumPane(false);
+        setUsersPane(false);
     }, []);
 
     const posts = useSelector((state) => state.posts)
     const albums = useSelector((state) => state.albums)
+    const users = useSelector((state) => state.users)
+
 
     const [showAlbumPane, setShowAlbumPane] = useState(true);
     const [showPostPane, setShowPostPane] = useState(true);
+    const [showUsersPane, setUsersPane] = useState(true);
 
 
     function handleAlbumPane() {
         setShowAlbumPane(true);
         setShowPostPane(false);
-        console.log("OK")
+        setUsersPane(false);
     }
 
     function handlePostPane() {
         setShowPostPane(true);
+        setShowAlbumPane(false)
+        setUsersPane(false);
+    }
+
+    function handleUserPane() {
+        setUsersPane(true);
+        setShowPostPane(false);
         setShowAlbumPane(false)
     }
 
@@ -43,6 +58,10 @@ function Main() {
             <div className={'w-full h-12  relative top-4 hover:bg-[#105669] cursor-pointer'} onClick={handleAlbumPane}>
                 <img src={albumIMG} className={'w-8 relative left-3 inline-block'}/>
                 <p className={'inline-block text-[#D2D7E6] text-[25px] relative top-1 left-6'}>Albums</p>
+            </div>
+            <div className={'w-full h-12  relative top-4 hover:bg-[#105669] cursor-pointer'} onClick={handleUserPane}>
+                <img src={usersIMG} className={'w-8 relative left-3 inline-block'}/>
+                <p className={'inline-block text-[#D2D7E6] text-[25px] relative top-1 left-6'}>Users</p>
             </div>
 
            {/* <div>
@@ -92,7 +111,7 @@ function Main() {
                     {/*-------------------MSG BOX-----------------------------------------*/}
 
                     {posts.map((post) => (
-                            <Post title={post.id} body={post.body}/>
+                            <Post key={post.id} title={post.id} author = {users.filter(user => user.id === post.userId)?.name}  body={post.body} />
 
                         )
                     )}
@@ -138,7 +157,7 @@ function Main() {
 
                     {
                         albums.map((album) => (
-                            <Albums title={album.title} />
+                            <Albums title={album.title}/>
 
                         )
                     )}
@@ -156,6 +175,42 @@ function Main() {
                     </div>*/}
 
                 </div>
+            )
+        }
+
+        {
+            showUsersPane && (
+                <div className={'w-[90.2%] h-[93.3%] absolute top-12 left-[150px] bg-[#f9fafc] overflow-auto'}>
+
+                    {
+                        users.map((user) => (
+                                <User name={user.name} email={user.email} phone={user.phone} company={user.company.name} website={user.website}/>
+
+                            )
+                        )}
+
+                    {/*<div className={'w-[500px] h-[300px] border-2 border-black m-8 bg-white rounded-[10px]'}>
+                        <img src={userIMG} className={'w-14 relative left-5 top-5'}/>
+                        <p className={'text-[25px] font-bold text-center relative top-10 text-amber-800'}>Maleen</p>
+                        <div className={'w-full h-10 border-2 border-black relative top-10  text-[18px] font-bold'}>
+                            <p className={'inline-block'}>maleen@gmail.com</p>
+                            <p className={'inline-block relative left-[180px]'}>0776548547</p>
+                        </div>
+                        <div className={'w-full h-14 border-2 border-black relative top-10  text-[18px] font-bold'}>
+                            <p className={'inline-block'}>address</p>
+                        </div>
+                        <div className={'w-full h-14 border-2 border-black relative top-10  text-[18px] font-bold'}>
+                            <p className={'inline-block'}>Company</p>
+                        </div>
+                        <div className={'w-full h-14 border-2 border-black relative top-10  text-[18px] font-bold'}>
+                            <p className={'inline-block'}>website</p>
+                        </div>
+
+                    </div>*/}
+
+                </div>
+
+
             )
         }
 

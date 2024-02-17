@@ -4,6 +4,7 @@ import {setPosts} from "../slice/postSlice.js";
 import {setComments} from "../slice/commentSlice.js";
 import {setAlbums} from "../slice/albumSlice.js";
 import {setPhotos} from "../slice/photoSlice.js";
+import {setUsers} from "../slice/userSclice.js";
 
 function* fetchPost() {
     try {
@@ -46,6 +47,16 @@ function* fetchPhoto() {
         yield put({ type: 'FETCH_PHOTOS_FAILED', message: e.message })
     }
 }
+function* fetchUser() {
+    try {
+        const users = yield call(axios.get,"https://jsonplaceholder.typicode.com/users")
+        yield put(setUsers(users.data))
+        console.log("USERS : "+users.data)
+
+    } catch (e) {
+        yield put({ type: 'FETCH_USERS_FAILED', message: e.message })
+    }
+}
 
 
 function* mySaga() {
@@ -53,6 +64,7 @@ function* mySaga() {
     yield takeEvery('FETCH_COMMENTS_REQUESTED', fetchComment);
     yield takeEvery('FETCH_ALBUMS_REQUESTED', fetchAlbum);
     yield takeEvery('FETCH_PHOTOS_REQUESTED', fetchPhoto);
+    yield takeEvery('FETCH_USERS_REQUESTED', fetchUser);
 
 }
 
